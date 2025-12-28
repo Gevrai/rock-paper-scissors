@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://c502bfpjsc2ve"]
+
+[ext_resource type="Script" uid="uid://j3w68gsv1s4s" path="res://game.gd" id="1_7jktm"]
+[ext_resource type="Texture2D" uid="uid://ddh8j3e18u8ih" path="res://assets/rock.png" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://bchp6wre1xyqv" path="res://assets/paper.png" id="2_feb5d"]
+[ext_resource type="Theme" uid="uid://cvk5nv8stwcnu" path="res://assets/ui_theme.tres" id="2_ryrav"]
+[ext_resource type="Texture2D" uid="uid://btvoj8milas4v" path="res://assets/scissors.png" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://byrc4t3ragebg" path="res://assets/idle.png" id="4_fc0e3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryrav"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.16470589, 0.043137256, 0.23921569, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_eow3j"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ryrav")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7jktm")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2927723, 0.13201988, 0.27337784, 1)
+
+[node name="Opponent" type="Sprite2D" parent="CanvasLayer2"]
+unique_name_in_owner = true
+position = Vector2(200, 131)
+rotation = -3.1415925
+scale = Vector2(1.83, 1.83)
+texture = ExtResource("4_fc0e3")
+
+[node name="Player" type="Sprite2D" parent="CanvasLayer2"]
+unique_name_in_owner = true
+position = Vector2(206.00002, 500)
+scale = Vector2(1.83, 1.83)
+texture = ExtResource("4_fc0e3")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ryrav")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_ryrav")
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer2/PanelContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_eow3j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/PanelContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="ROCK_BTN" type="Button" parent="CanvasLayer2/PanelContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+icon = ExtResource("1_80nbo")
+
+[node name="PAPER_BTN" type="Button" parent="CanvasLayer2/PanelContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+icon = ExtResource("2_feb5d")
+
+[node name="SCISSORS_BTN" type="Button" parent="CanvasLayer2/PanelContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+icon = ExtResource("3_fc0e3")
